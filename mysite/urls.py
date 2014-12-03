@@ -7,6 +7,5 @@ urlpatterns = patterns('',
     url(r'^blog/', include('blog.urls')),
     url(r'^ticket/', include('ticketx.urls')),
 
-
     url(r'^admin/', include(admin.site.urls)),
 )
