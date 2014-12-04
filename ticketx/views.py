@@ -12,10 +12,10 @@ def register(request):
 		passWord = request.POST['password'] 		#获取页面中输入的信息
 		user = User(name = userName, password = passWord)
 		user.save()									#保存进数据库
-		return render_to_response("register_success.html", {"user": user}) #登陆成功
+		return render_to_response("dashboard.html", {"user": user}) #登陆成功
 	return render_to_response("register.html", context_instance=RequestContext(request))
 
-def login(request):
+def index(request):
 	print("login" + request.method)
 	if request.method == 'POST':
 		# 点击注册
@@ -31,6 +31,6 @@ def login(request):
 					return render_to_response("login_failed.html", {"msg": "用户名或者密码错误!"})
 			except ObjectDoesNotExist:
 				return render_to_response("login_failed.html", {"msg": "还没有注册哦！"})
-			return render_to_response("login_success.html", {"user": user})
+			return render_to_response("dashboard.html", {"user": user})
 	print("not post")
-	return render_to_response('login.html', context_instance = RequestContext(request)) 
+	return render_to_response('index.html', context_instance = RequestContext(request)) 
